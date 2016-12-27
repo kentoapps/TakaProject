@@ -2,6 +2,16 @@
 たかはるAndroidアプリ開発トレーニングプロジェクト
 
 # Gitの使い方
+## 初期設定
+```
+git config --global user.name "Takaharu Sakamoto"
+```
+```
+git config --global user.email takamail@example.com
+```
+
+`takamail@example.com`ここには自分のメールアドレスを入れてください。
+
 ## 課題をはじめる
 ### プロジェクトをダウンロードする
 ```
