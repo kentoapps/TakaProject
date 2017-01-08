@@ -12,16 +12,6 @@
     android:orientation="vertical"
     tools:context="com.kento.takaproject.MainActivity">
 
-    <Button
-        android:text="@string/button_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:id="@+id/btnSend"
-        android:onClick="btnSend_onClick"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +23,27 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/button_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/btnSend"
+        android:onClick="btnSend_onClick"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/button_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/btnCharacter"
+        android:onClick="btnCharacter_onClick"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btnSend"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

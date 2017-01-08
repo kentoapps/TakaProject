@@ -14,7 +14,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnSend_onClick(View v) {
-        Intent i = new Intent(this, com.kento.takaproject.DetailActivity.class);
+        Intent i = new Intent(this, DetailActivity.class);
+        startActivity(i);
+    }
+
+    public void btnCharacter_onClick(View v) {
+        Intent i = new Intent(this, NameListActivity.class);
         startActivity(i);
     }
 }
