@@ -82,7 +82,6 @@ public class NameListActivity extends AppCompatActivity {
 
         for (int i = 0; i < character_img.length; i++) {
             Character_date characters = new Character_date();
-
             characters.setCharacter_img(character_img[i]);
             characters.setCharacter_name(character_name[i]);
             characters.setCharacter_words(character_words[i]);
@@ -90,7 +89,7 @@ public class NameListActivity extends AppCompatActivity {
         }
 
         //Adapter -ArrayAdapter - CharacterAdapter
-        CharacterAdapter adapter = new CharacterAdapter(this, 0, character_data);
+        final CharacterAdapter adapter = new CharacterAdapter(this, 0, character_data);
 
 
         //ListViewに表示
@@ -104,11 +103,10 @@ public class NameListActivity extends AppCompatActivity {
                     int pos,
                     long id) {
                 // 選択アイテムを取得
-                TextView listView = (TextView) view.findViewById(R.id.name);
-
+                Character_date listView = character_data.get(pos);
 
                 //通知ダイヤルを表示
-                Toast.makeText(NameListActivity.this, listView.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NameListActivity.this, listView.getCharacter_words(), Toast.LENGTH_SHORT).show();
             }
         });
 

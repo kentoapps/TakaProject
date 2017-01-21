@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:layout_weight="1"
+    android:orientation="horizontal"
     android:padding="16dp">
 
 
@@ -12,9 +12,9 @@
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:textSize="24sp"
         android:layout_weight="1"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:textSize="24sp" />
 
 
     <ImageView
@@ -25,5 +25,3 @@
 
 
 </LinearLayout>
-
-
