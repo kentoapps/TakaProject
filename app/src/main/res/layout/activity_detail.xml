@@ -45,5 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_detail2"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:id="@+id/textView" />
 </LinearLayout>

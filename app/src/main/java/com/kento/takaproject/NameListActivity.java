@@ -1,6 +1,7 @@
 package com.kento.takaproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ListViewCompat;
@@ -21,6 +22,8 @@ import java.util.StringTokenizer;
 
 public class NameListActivity extends AppCompatActivity {
 
+    public final static String CHARACTER_NAME = "com.kento.takaproject.CHARACTER_NAME.NAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +36,7 @@ public class NameListActivity extends AppCompatActivity {
         //キャラリスト項目をarrayListとして準備
         final ArrayList<Character_date> character_data = new ArrayList<>();
 
-        int[] character_img = {
+        final int[] character_img = {
                 R.drawable.josuke,
                 R.drawable.okuyasu,
                 R.drawable.keicho,
@@ -103,11 +106,22 @@ public class NameListActivity extends AppCompatActivity {
                     int pos,
                     long id) {
                 // 選択アイテムを取得
-                Character_date listView = character_data.get(pos);
+                Character_date character = (Character_date) parent.getItemAtPosition(pos);
+
 
                 //通知ダイヤルを表示
-                Toast.makeText(NameListActivity.this, listView.getCharacter_words(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NameListActivity.this, character.getCharacter_words(), Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(), CharacterDetail.class);
+
+               // i.putExtra("CHARACTER_INFO", character.getCharacter_img());
+                  i.putExtra("CHARACTER_NAME", character.getCharacter_name());
+               // i.putExtra("CHARACTER_WORDS", character.getCharacter_words());
+
+                startActivity(i);
+
             }
+
         });
 
     }
