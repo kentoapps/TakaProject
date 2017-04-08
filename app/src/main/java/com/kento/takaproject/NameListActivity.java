@@ -22,7 +22,9 @@ import java.util.StringTokenizer;
 
 public class NameListActivity extends AppCompatActivity {
 
-    public final static String CHARACTER_NAME = "com.kento.takaproject.CHARACTER_NAME.NAME";
+    public final static String CHARACTER_IMG = "CHARACTER_IMG";
+    public final static String CHARACTER_NAME = "CHARACTER_NAME";
+    public final static String CHARACTER_WORD = "CHARACTER_WORD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class NameListActivity extends AppCompatActivity {
         final int[] character_img = {
                 R.drawable.josuke,
                 R.drawable.okuyasu,
-                R.drawable.keicho,
+                R.drawable.koichi,
                 R.drawable.rohan,
                 R.drawable.jotaro,
                 R.drawable.kira,
@@ -108,18 +110,16 @@ public class NameListActivity extends AppCompatActivity {
                 // 選択アイテムを取得
                 Character_date character = (Character_date) parent.getItemAtPosition(pos);
 
-
                 //通知ダイヤルを表示
                 //Toast.makeText(NameListActivity.this, character.getCharacter_words(), Toast.LENGTH_SHORT).show();
 
-                Intent i = new Intent(getApplicationContext(), CharacterDetail.class);
+                Intent intent = new Intent(getApplicationContext(), CharacterDetail.class);
 
-               // i.putExtra("CHARACTER_INFO", character.getCharacter_img());
-                  i.putExtra("CHARACTER_NAME", character.getCharacter_name());
-               // i.putExtra("CHARACTER_WORDS", character.getCharacter_words());
+                intent.putExtra(CHARACTER_IMG, character.getCharacter_img());
+                intent.putExtra(CHARACTER_NAME, character.getCharacter_name());
+                intent.putExtra(CHARACTER_WORD, character.getCharacter_words());
 
-                startActivity(i);
-
+                startActivity(intent);
             }
 
         });
