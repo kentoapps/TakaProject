@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
 
 
 public class NameListActivity extends AppCompatActivity {
@@ -36,9 +32,9 @@ public class NameListActivity extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.characterList);
 
         //キャラリスト項目をarrayListとして準備
-        final ArrayList<Character_date> character_data = new ArrayList<>();
+        final ArrayList<CharacterDate> CharacterData = new ArrayList<>();
 
-        final int[] character_img = {
+        final int[] img = {
                 R.drawable.josuke,
                 R.drawable.okuyasu,
                 R.drawable.koichi,
@@ -54,7 +50,7 @@ public class NameListActivity extends AppCompatActivity {
         };
 
 
-        final String[] character_name = {
+        final String[] name = {
                 "東方仗助",
                 "虹村億泰",
                 "広瀬康一",
@@ -69,7 +65,7 @@ public class NameListActivity extends AppCompatActivity {
                 "虹村形兆",
         };
 
-        final String[] character_words = {
+        final String[] words = {
                 "グレートだぜ！",
                 "このダボが！",
                 "僕のエコーズ！",
@@ -85,16 +81,16 @@ public class NameListActivity extends AppCompatActivity {
         };
 
 
-        for (int i = 0; i < character_img.length; i++) {
-            Character_date characters = new Character_date();
-            characters.setCharacter_img(character_img[i]);
-            characters.setCharacter_name(character_name[i]);
-            characters.setCharacter_words(character_words[i]);
-            character_data.add(characters);
+        for (int i = 0; i < img.length; i++) {
+            CharacterDate characters = new CharacterDate();
+            characters.setImg(img[i]);
+            characters.setName(name[i]);
+            characters.setWords(words[i]);
+            CharacterData.add(characters);
         }
 
         //Adapter -ArrayAdapter - CharacterAdapter
-        final CharacterAdapter adapter = new CharacterAdapter(this, 0, character_data);
+        final CharacterAdapter adapter = new CharacterAdapter(this, 0, CharacterData);
 
 
         //ListViewに表示
@@ -108,16 +104,16 @@ public class NameListActivity extends AppCompatActivity {
                     int pos,
                     long id) {
                 // 選択アイテムを取得
-                Character_date character = (Character_date) parent.getItemAtPosition(pos);
+                CharacterDate character = (CharacterDate) parent.getItemAtPosition(pos);
 
                 //通知ダイヤルを表示
                 //Toast.makeText(NameListActivity.this, character.getCharacter_words(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), CharacterDetail.class);
 
-                intent.putExtra(CHARACTER_IMG, character.getCharacter_img());
-                intent.putExtra(CHARACTER_NAME, character.getCharacter_name());
-                intent.putExtra(CHARACTER_WORD, character.getCharacter_words());
+                intent.putExtra(CHARACTER_IMG, character.getImg());
+                intent.putExtra(CHARACTER_NAME, character.getName());
+                intent.putExtra(CHARACTER_WORD, character.getWords());
 
                 startActivity(intent);
             }
@@ -127,10 +123,10 @@ public class NameListActivity extends AppCompatActivity {
     }
 
 
-    public class CharacterAdapter extends ArrayAdapter<Character_date> {
+    public class CharacterAdapter extends ArrayAdapter<CharacterDate> {
         private LayoutInflater layoutInflater;
 
-        public CharacterAdapter(Context c, int id, ArrayList<Character_date> character_data) {
+        public CharacterAdapter(Context c, int id, ArrayList<CharacterDate> character_data) {
             super(c, id, character_data);
 
             this.layoutInflater = (LayoutInflater) c.getSystemService(
@@ -150,45 +146,45 @@ public class NameListActivity extends AppCompatActivity {
                 );
             }
             // 特定の行(pos)のデータを得る
-            Character_date character_date = (Character_date) getItem(pos);
+            CharacterDate CharacterDate = getItem(pos);
 
             ((ImageView) convertView.findViewById(R.id.icon))
-                    .setImageResource(character_date.getCharacter_img());
+                    .setImageResource(CharacterDate.getImg());
             ((TextView) convertView.findViewById(R.id.name))
-                    .setText(character_date.getCharacter_name());
+                    .setText(CharacterDate.getName());
 
             return convertView;
         }
     }
 
 
-    public class Character_date {
-        private int character_img;
-        private String character_name;
-        private String character_words;
+    public class CharacterDate {
+        private int img;
+        private String name;
+        private String words;
 
-        public String getCharacter_words() {
-            return character_words;
+        public String getWords() {
+            return words;
         }
 
-        public void setCharacter_words(String character_words) {
-            this.character_words = character_words;
+        public void setWords(String words) {
+            this.words = words;
         }
 
-        public String getCharacter_name() {
-            return character_name;
+        public String getName() {
+            return name;
         }
 
-        public void setCharacter_name(String character_name) {
-            this.character_name = character_name;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public int getCharacter_img() {
-            return character_img;
+        public int getImg() {
+            return img;
         }
 
-        public void setCharacter_img(int character_img) {
-            this.character_img = character_img;
+        public void setImg(int img) {
+            this.img = img;
         }
     }
 }
