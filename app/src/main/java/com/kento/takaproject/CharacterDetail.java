@@ -15,9 +15,17 @@ public class CharacterDetail extends AppCompatActivity {
         setContentView(R.layout.activity_character_detail);
 
         Intent intent = getIntent();
+        int img = intent.getIntExtra(NameListActivity.CHARACTER_IMG,0);
         String name = intent.getStringExtra(NameListActivity.CHARACTER_NAME);
-        TextView nameLabel = (TextView) findViewById(R.id.namename);
+        String word = intent.getStringExtra(NameListActivity.CHARACTER_WORD);
+
+        ImageView imgLabel = (ImageView) findViewById(R.id.icon);
+        TextView nameLabel = (TextView) findViewById(R.id.name);
+        TextView wordLabel = (TextView) findViewById(R.id.word);
+
+        imgLabel.setImageResource(img);
         nameLabel.setText(name);
+        wordLabel.setText(word);
 
     }
 }
