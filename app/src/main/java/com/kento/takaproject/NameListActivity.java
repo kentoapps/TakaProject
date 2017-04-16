@@ -32,7 +32,7 @@ public class NameListActivity extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.characterList);
 
         //キャラリスト項目をarrayListとして準備
-        final ArrayList<CharacterDate> CharacterData = new ArrayList<>();
+        final ArrayList<CharacterData> characterDataList = new ArrayList<>();
 
         final int[] img = {
                 R.drawable.josuke,
@@ -82,15 +82,15 @@ public class NameListActivity extends AppCompatActivity {
 
 
         for (int i = 0; i < img.length; i++) {
-            CharacterDate characters = new CharacterDate();
+            CharacterData characters = new CharacterData();
             characters.setImg(img[i]);
             characters.setName(name[i]);
             characters.setWords(words[i]);
-            CharacterData.add(characters);
+            characterDataList.add(characters);
         }
 
         //Adapter -ArrayAdapter - CharacterAdapter
-        final CharacterAdapter adapter = new CharacterAdapter(this, 0, CharacterData);
+        final CharacterAdapter adapter = new CharacterAdapter(this, 0, characterDataList);
 
 
         //ListViewに表示
@@ -104,7 +104,7 @@ public class NameListActivity extends AppCompatActivity {
                     int pos,
                     long id) {
                 // 選択アイテムを取得
-                CharacterDate character = (CharacterDate) parent.getItemAtPosition(pos);
+                CharacterData character = (CharacterData) parent.getItemAtPosition(pos);
 
                 //通知ダイヤルを表示
                 //Toast.makeText(NameListActivity.this, character.getCharacter_words(), Toast.LENGTH_SHORT).show();
@@ -123,10 +123,10 @@ public class NameListActivity extends AppCompatActivity {
     }
 
 
-    public class CharacterAdapter extends ArrayAdapter<CharacterDate> {
+    public class CharacterAdapter extends ArrayAdapter<CharacterData> {
         private LayoutInflater layoutInflater;
 
-        public CharacterAdapter(Context c, int id, ArrayList<CharacterDate> character_data) {
+        public CharacterAdapter(Context c, int id, ArrayList<CharacterData> character_data) {
             super(c, id, character_data);
 
             this.layoutInflater = (LayoutInflater) c.getSystemService(
@@ -146,19 +146,19 @@ public class NameListActivity extends AppCompatActivity {
                 );
             }
             // 特定の行(pos)のデータを得る
-            CharacterDate CharacterDate = getItem(pos);
+            CharacterData characterData = getItem(pos);
 
             ((ImageView) convertView.findViewById(R.id.icon))
-                    .setImageResource(CharacterDate.getImg());
+                    .setImageResource(characterData.getImg());
             ((TextView) convertView.findViewById(R.id.name))
-                    .setText(CharacterDate.getName());
+                    .setText(characterData.getName());
 
             return convertView;
         }
     }
 
 
-    public class CharacterDate {
+    public class CharacterData {
         private int img;
         private String name;
         private String words;
